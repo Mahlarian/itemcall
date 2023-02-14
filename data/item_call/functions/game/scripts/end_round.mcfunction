@@ -81,7 +81,7 @@ execute if score .item ic_gamedata matches 77 as @a[tag=round_victor,nbt={Invent
 
 tellraw @a [{"selector":"@a[tag=round_victor]","separator":",","color":"light_purple"},{"text":" successfully found the requested item!","color":"green"}]
 playsound minecraft:entity.player.levelup master @a ~ ~ ~ 1000 1
-execute as @a[tag=ic_player] run trigger ic_vote set 400
-scoreboard players reset @a ic_vote 
+execute if score .vote_skip ic_gamedata matches 1 as @a[tag=ic_player] run trigger ic_vote set 400
+execute if score .vote_skip ic_gamedata matches 1 run scoreboard players reset @a ic_vote 
 
 schedule function item_call:game/scripts/start_round 5s
