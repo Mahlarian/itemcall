@@ -1,0 +1,2 @@
+tellraw @a[tag=ic_op] {"text":"Itemcall v1.0 loaded","color":"green"}
+execute if score .active ic_gamedata matches 0 run tellraw @a[tag=ic_op] [{"text":"[Itemcall] ","color":"aqua"},{"text":"No game in progress -- Run the ","color":"red"},{"text":"[menu]","color":"yellow","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_menu set 1"}},{"text":" to configure and start","color":"red"}]
