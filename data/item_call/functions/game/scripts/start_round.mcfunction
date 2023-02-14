@@ -42,6 +42,7 @@ execute if score .choose ic_timers matches 176 run function item_call:game/scrip
 execute if score .choose ic_timers matches 176 run title @a times 0 60 40
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players reset @a ic_vote
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players enable @a[tag=ic_player] ic_vote
+execute if score .vote_skip ic_gamedata matches 2 if score .choose ic_timers matches 176 run scoreboard players enable @a[tag=ic_op] ic_vote
 
 #
 execute if score .choose ic_timers matches 176 run schedule function item_call:game/scripts/item_check 10t
