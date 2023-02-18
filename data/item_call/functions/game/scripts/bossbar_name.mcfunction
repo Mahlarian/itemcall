@@ -3,6 +3,8 @@
 #
 # handles naming the bossbar when set to point goal AND display points is disabled
 # round 1+
+bossbar set item_call:status players @a
+bossbar set item_call:status color white
 execute if score .win_method ic_gamedata matches 1 if score .show_points ic_gamedata matches 0 run bossbar set item_call:status max 1
 execute if score .win_method ic_gamedata matches 1 if score .show_points ic_gamedata matches 0 run bossbar set item_call:status value 1
 
