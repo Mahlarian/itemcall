@@ -79,6 +79,7 @@ execute if score .item ic_gamedata matches 75 as @a[tag=round_victor,nbt={Invent
 execute if score .item ic_gamedata matches 76 as @a[tag=round_victor,nbt={Inventory:[{id:"minecraft:beacon"}]}] run scoreboard players add @s ic_points 22
 execute if score .item ic_gamedata matches 77 as @a[tag=round_victor,nbt={Inventory:[{id:"minecraft:netherite_block"}]}] run scoreboard players add @s ic_points 18
 
+function item_call:game/scripts/bossbar_name
 tellraw @a [{"selector":"@a[tag=round_victor]","separator":",","color":"light_purple"},{"text":" successfully found the requested item!","color":"green"}]
 playsound minecraft:entity.player.levelup master @a ~ ~ ~ 1000 1
 execute if score .vote_skip ic_gamedata matches 1 as @a[tag=ic_player] run trigger ic_vote set 400

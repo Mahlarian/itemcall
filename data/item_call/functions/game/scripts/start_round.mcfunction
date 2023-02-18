@@ -40,8 +40,10 @@ execute if score .choose ic_timers matches 176 run playsound minecraft:block.anv
 execute if score .choose ic_timers matches 176 run title @a title [{"text":"Round ","color":"green"},{"score":{"name":".round","objective":"ic_gamedata"},"color":"light_purple"}]
 execute if score .choose ic_timers matches 176 run function item_call:game/scripts/pick_item
 execute if score .choose ic_timers matches 176 run title @a times 0 60 40
+execute if score .choose ic_timers matches 176 run function item_call:game/scripts/bossbar_name
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players reset @a ic_vote
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players enable @a[tag=ic_player] ic_vote
+execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run tag @a[tag=vote_caller] remove vote_caller
 execute if score .vote_skip ic_gamedata matches 2 if score .choose ic_timers matches 176 run scoreboard players enable @a[tag=ic_op] ic_vote
 
 #

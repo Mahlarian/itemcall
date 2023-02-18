@@ -5,7 +5,13 @@ execute if score .vote ic_timers matches 1 run scoreboard players reset @a ic_vo
 execute if score .vote ic_timers matches 1 run title @a title {"text":"Game Paused","color":"red"}
 execute if score .vote ic_timers matches 1 run title @a subtitle {"text":"A vote is in progress","color":"white"}
 execute if score .vote ic_timers matches 1 run title @a times 20 200 20
+execute if score .vote ic_timers matches 1 run bossbar set item_call:status color red
+execute if score .vote ic_timers matches 1 run bossbar set item_call:status name {"text": "Game paused","color": "red"}
+execute if score .vote ic_timers matches 1 run bossbar set item_call:status max 1
+execute if score .vote ic_timers matches 1 run bossbar set item_call:status value 1
+execute if score .vote ic_timers matches 1 run scoreboard players reset @a[tag=ic_player] ic_vote
 execute if score .vote ic_timers matches 1 run schedule clear item_call:game/scripts/item_check
+execute if score .vote ic_timers matches 1 run tag @s add vote_caller
 execute if score .vote ic_timers matches 1 store result score .vote_needed ic_gamedata run execute if entity @a[tag=ic_player] 
 execute if score .vote ic_timers matches 2 run scoreboard players operation .vote_needed ic_gamedata /= .vote_div ic_gamedata
 execute if score .vote ic_timers matches 2 if score .vote_needed ic_gamedata matches 0 run scoreboard players set .vote_needed ic_gamedata 1
