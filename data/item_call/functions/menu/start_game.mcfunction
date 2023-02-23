@@ -84,8 +84,10 @@ execute if score .start ic_timers matches 211 run bossbar set item_call:status v
 # cancel if no players
 execute if score .start ic_timers matches 212 store result score .players ic_gamedata run execute if entity @a[team=ic_player]
 execute if score .start ic_timers matches 212 if score .players ic_gamedata matches 0 run function item_call:game/scripts/no_players
-# remove trigger perms
+# variable adjustments
 execute if score .start ic_timers matches 213 run scoreboard players set .active ic_gamedata 1
+execute if score .start ic_timers matches 213 run scoreboard players set .round ic_gamedata 1
+# remove trigger perms
 execute if score .start ic_timers matches 213 as @a[tag=ic_op] run trigger ic_menu set 999
 execute if score .start ic_timers matches 213 as @a run trigger ic_jointeam set 999
 execute if score .start ic_timers matches 213 run scoreboard players reset @a[tag=ic_op] ic_menu
