@@ -25,9 +25,9 @@ execute if score .tutorial ic_timers matches 141 run title @a subtitle [{"text":
 execute if score .tutorial ic_timers matches 141 run title @a times 0 60 0
 execute if score .tutorial ic_timers matches 181 run playsound minecraft:block.wooden_button.click_on master @a ~ ~ ~ 1000 1
 execute if score .tutorial ic_timers matches 181 if score .win_method ic_gamedata matches 1 run title @a title {"text":"Player","color":"light_purple"}
-execute if score .tutorial ic_timers matches 181 if score .win_method ic_gamedata matches 1 run title @p subtitle [{"text":"to achieve ","color":"aqua"},{"score":{"name":".win_amount","objective":"ic_gamedata"},"color":"light_purple"},{"text":" points","color":"aqua"},{"text":" wins","color":"light_purple"}]
+execute if score .tutorial ic_timers matches 181 if score .win_method ic_gamedata matches 1 run title @a subtitle [{"text":"to achieve ","color":"aqua"},{"score":{"name":".win_amount","objective":"ic_gamedata"},"color":"light_purple"},{"text":" points","color":"aqua"},{"text":" wins","color":"light_purple"}]
 execute if score .tutorial ic_timers matches 181 if score .win_method ic_gamedata matches 2 run title @a title {"text":"Player","color":"light_purple"}
-execute if score .tutorial ic_timers matches 181 if score .win_method ic_gamedata matches 2 run title @p subtitle [{"text":"with the highest score","color":"light_purple"},{"text":"after ","color":"aqua"},{"score":{"name":".win_amount","objective":"ic_gamedata"},"color":"light_purple"},{"text":" rounds","color":"aqua"},{"text":" wins","color":"light_purple"}]
+execute if score .tutorial ic_timers matches 181 if score .win_method ic_gamedata matches 2 run title @a subtitle [{"text":"with the highest score","color":"light_purple"},{"text":"after ","color":"aqua"},{"score":{"name":".win_amount","objective":"ic_gamedata"},"color":"light_purple"},{"text":" rounds","color":"aqua"},{"text":" wins","color":"light_purple"}]
 execute if score .tutorial ic_timers matches 181 run title @a times 0 60 0
 execute if score .tutorial ic_timers matches 221 run playsound minecraft:block.wooden_button.click_on master @a ~ ~ ~ 1000 1
 execute if score .tutorial ic_timers matches 221 run title @a title {"text":"Good luck","color":"aqua"}
