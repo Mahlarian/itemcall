@@ -84,5 +84,8 @@ tellraw @a [{"selector":"@a[tag=round_victor]","separator":",","color":"light_pu
 playsound minecraft:entity.player.levelup master @a ~ ~ ~ 1000 1
 execute if score .vote_skip ic_gamedata matches 1 as @a[tag=ic_player] run trigger ic_vote set 400
 execute if score .vote_skip ic_gamedata matches 1 run scoreboard players reset @a ic_vote 
+scoreboard players add .round ic_gamedata 1
 
+execute if score .win_method ic_gamedata matches 1 as @a if score @s ic_points >= .win_amount ic_gamedata run function item_call:game/scripts/end_game
+execute if score .win_method ic_gamedata matches 2 if score .round ic_gamedata > .win_amount ic_gamedata run function item_call:game/scripts/end_game
 schedule function item_call:game/scripts/start_round 5s
