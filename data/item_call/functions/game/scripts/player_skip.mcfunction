@@ -2,6 +2,7 @@ scoreboard players add .vote ic_timers 1
 schedule function item_call:game/scripts/player_skip 1t
 
 execute if score .vote ic_timers matches 1 run scoreboard players reset @a ic_vote
+execute if score .vote ic_timers matches 1 run scoreboard players set .player_votes ic_gamedata 0
 execute if score .vote ic_timers matches 1 run title @a title {"text":"Game Paused","color":"red"}
 execute if score .vote ic_timers matches 1 run title @a subtitle {"text":"A vote is in progress","color":"white"}
 execute if score .vote ic_timers matches 1 run title @a times 20 200 20
