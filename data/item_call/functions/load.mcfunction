@@ -4,8 +4,6 @@ scoreboard objectives add ic_menu trigger
 scoreboard objectives add ic_jointeam trigger
 scoreboard objectives add ic_vote trigger
 scoreboard objectives add ic_points dummy {"text":"Points","color":"aqua","bold":true}
-team add ic_player
-team add ic_spectator
 bossbar add item_call:status {"text": "item_call"}
 execute unless score .active ic_gamedata matches 0..1 run scoreboard players set .active ic_gamedata 0
 execute unless score .win_method ic_gamedata matches 1..2 run scoreboard players set .win_method ic_gamedata 1

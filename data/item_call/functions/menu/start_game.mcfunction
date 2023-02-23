@@ -14,8 +14,8 @@ execute if score .start ic_timers matches 1 run playsound minecraft:block.note_b
 execute if score .start ic_timers matches 4 run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1000 1.6
 execute if score .start ic_timers matches 8 run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1000 1.7
 execute if score .start ic_timers matches 8 run bossbar set item_call:status name [{"text":"S","color":"aqua"},{"text":"tarting soon","color":"white"}]
-execute if score .start ic_timers matches 11 run tellraw @a[team=!ic_player] [{"text":"Last chance to join player team!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 11"}}]
-execute if score .start ic_timers matches 11 run tellraw @a[team=ic_player] [{"text":"Last chance to spectate!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 12"}}]
+execute if score .start ic_timers matches 11 run tellraw @a[tag=!ic_player] [{"text":"Last chance to join player team!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 11"}}]
+execute if score .start ic_timers matches 11 run tellraw @a[tag=ic_player] [{"text":"Last chance to spectate!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 12"}}]
 execute if score .start ic_timers matches 11 run title @a title {"text":"Itemcall","color":"aqua"}
 execute if score .start ic_timers matches 11 run title @a subtitle [{"text":"A datapack creation by ","color":"light_purple"},{"text": "Mahlarian","color": "white"}]
 execute if score .start ic_timers matches 11 run title @a times 20 60 20
@@ -82,7 +82,7 @@ execute if score .start ic_timers matches 206 run bossbar set item_call:status n
 execute if score .start ic_timers matches 211 run bossbar set item_call:status name {"text":"Starting soon","color":"green"}
 execute if score .start ic_timers matches 211 run bossbar set item_call:status value 0
 # cancel if no players
-execute if score .start ic_timers matches 212 store result score .players ic_gamedata run execute if entity @a[team=ic_player]
+execute if score .start ic_timers matches 212 store result score .players ic_gamedata run execute if entity @a[tag=ic_player]
 execute if score .start ic_timers matches 212 if score .players ic_gamedata matches 0 run function item_call:game/scripts/no_players
 #
 execute if score .start ic_timers matches 212 unless score .dep_check ic_gamedata matches 1 run function item_call:game/scripts/dep_check_fail
@@ -102,14 +102,14 @@ execute if score .start ic_timers matches 213 if score .rand_spawn ic_gamedata m
 execute if score .start ic_timers matches 213 if score .rand_spawn ic_gamedata matches 1 run spreadplayers 0 0 0 5000 true @a[tag=wgen_marker]
 execute if score .start ic_timers matches 214 if score .rand_spawn ic_gamedata matches 1 as @a[tag=wgen_marker] at @s run tp @a @s
 # spread players
-execute if score .start ic_timers matches 215 if score .rand_spawn ic_gamedata matches 1 if score .players ic_gamedata matches 2.. if score .spread_plyr ic_gamedata matches 1 at @a[tag=wgen_marker] run spreadplayers ~ ~ 100 500 false @a[team=ic_player]
-execute if score .start ic_timers matches 215 if score .rand_spawn ic_gamedata matches 0 if score .players ic_gamedata matches 2.. if score .spread_plyr ic_gamedata matches 1 at @a[limit=1,sort=random] run spreadplayers ~ ~ 100 500 false @a[team=ic_player] 
+execute if score .start ic_timers matches 215 if score .rand_spawn ic_gamedata matches 1 if score .players ic_gamedata matches 2.. if score .spread_plyr ic_gamedata matches 1 at @a[tag=wgen_marker] run spreadplayers ~ ~ 100 500 false @a[tag=ic_player]
+execute if score .start ic_timers matches 215 if score .rand_spawn ic_gamedata matches 0 if score .players ic_gamedata matches 2.. if score .spread_plyr ic_gamedata matches 1 at @a[limit=1,sort=random] run spreadplayers ~ ~ 100 500 false @a[tag=ic_player] 
 # remove rand location tag (if needed)
 execute if score .start ic_timers matches 216 if score .rand_spawn ic_gamedata matches 1 run tag @a[tag=wgen_marker] remove wgen_marker
 # apply start effects
-execute if score .start ic_timers matches 216 run effect give @a[team=ic_player] minecraft:saturation 200 4 true
-execute if score .start ic_timers matches 216 run effect give @a[team=ic_player] minecraft:resistance 10 4 true
-execute if score .start ic_timers matches 216 run effect give @a[team=ic_player] minecraft:regeneration 10 4 true
+execute if score .start ic_timers matches 216 run effect give @a[tag=ic_player] minecraft:saturation 200 4 true
+execute if score .start ic_timers matches 216 run effect give @a[tag=ic_player] minecraft:resistance 10 4 true
+execute if score .start ic_timers matches 216 run effect give @a[tag=ic_player] minecraft:regeneration 10 4 true
 #
 execute if score .start ic_timers matches 216 if score .show_points ic_gamedata matches 1 run scoreboard objectives setdisplay sidebar ic_points
 execute if score .start ic_timers matches 216 if score .show_points ic_gamedata matches 0 run scoreboard objectives setdisplay sidebar 
