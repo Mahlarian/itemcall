@@ -14,12 +14,16 @@ execute if score .start ic_timers matches 1 run playsound minecraft:block.note_b
 execute if score .start ic_timers matches 4 run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1000 1.6
 execute if score .start ic_timers matches 8 run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1000 1.7
 execute if score .start ic_timers matches 8 run bossbar set item_call:status name [{"text":"S","color":"aqua"},{"text":"tarting soon","color":"white"}]
-execute if score .start ic_timers matches 11 run tellraw @a[tag=!ic_player] [{"text":"Last chance to join player team!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 11"}}]
+execute if score .start ic_timers matches 11 run tellraw @a[tag=!ic_player,tag=!ic_spectator] [{"text":"\n\nYou haven't chose a team yet!\n","color":"red","bold":true},{"text":"[Choose]","color":"blue","clickEvent":{"action":"run_command","value":"/trigger ic_jointeam"}},{"text":" a team before the game starts","color":"gray","bold":false}]
+execute if score .start ic_timers matches 11 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
+execute if score .start ic_timers matches 11 run tellraw @a[tag=ic_spectator] [{"text":"Last chance to join player team!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 11"}}]
 execute if score .start ic_timers matches 11 run tellraw @a[tag=ic_player] [{"text":"Last chance to spectate!\n","color":"red","bold":true},{"text":"[Click to join]","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger ic_jointeam set 12"}}]
 execute if score .start ic_timers matches 11 run title @a title {"text":"Itemcall","color":"aqua"}
 execute if score .start ic_timers matches 11 run title @a subtitle [{"text":"A datapack creation by ","color":"light_purple"},{"text": "Mahlarian","color": "white"}]
 execute if score .start ic_timers matches 11 run title @a times 20 60 20
 execute if score .start ic_timers matches 11 run playsound ui.button.click master @a ~ ~ ~ 1000 2
+execute if score .start ic_timers matches 13 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
+execute if score .start ic_timers matches 15 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
 execute if score .start ic_timers matches 16 run bossbar set item_call:status name [{"text":"St","color":"aqua"},{"text":"arting soon","color":"white"}]
 execute if score .start ic_timers matches 24 run bossbar set item_call:status name [{"text":"Sta","color":"aqua"},{"text":"rting soon","color":"white"}]
 execute if score .start ic_timers matches 31 run playsound ui.button.click master @a ~ ~ ~ 1000 2
@@ -43,6 +47,10 @@ execute if score .start ic_timers matches 103 run bossbar set item_call:status n
 execute if score .start ic_timers matches 111 run title @a title {"text":"Starting in","color":"green"}
 execute if score .start ic_timers matches 111 run title @a subtitle {"text":"5","color":"white"}
 execute if score .start ic_timers matches 111 run title @a times 10 30 0
+execute if score .start ic_timers matches 111 run tellraw @a[tag=!ic_player,tag=!ic_spectator] [{"text":"You haven't chose a team yet!\n","color":"red","bold":true},{"text":"[Choose]","color":"blue","clickEvent":{"action":"run_command","value":"/trigger ic_jointeam"}},{"text":" a team before the game starts","color":"gray","bold":false}]
+execute if score .start ic_timers matches 111 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
+execute if score .start ic_timers matches 113 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
+execute if score .start ic_timers matches 115 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
 execute if score .start ic_timers matches 111 run playsound ui.button.click master @a ~ ~ ~ 1000 2
 execute if score .start ic_timers matches 111 run bossbar set item_call:status value 5
 execute if score .start ic_timers matches 111 run bossbar set item_call:status name [{"text":"St","color":"green"},{"text":"arting soon","color":"aqua"}]
