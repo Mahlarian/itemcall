@@ -83,4 +83,6 @@ execute if entity @a[tag=round_victor] run function item_call:game/scripts/end_r
 execute unless entity @a[tag=round_victor] run schedule function item_call:game/scripts/item_check 1s
 execute if score .vote_skip ic_gamedata matches 1 unless entity @a[tag=round_victor] as @a[tag=ic_player] if score @s ic_vote matches 1 run function item_call:game/scripts/player_skip
 execute if score .vote_skip ic_gamedata matches 2 unless entity @a[tag=round_victor] as @a[tag=ic_op] if score @s ic_vote matches 1 run function item_call:game/scripts/ic_op_skip
+execute as @a[tag=ic_player] if score @s ic_vote matches 11 run scoreboard players enable @s ic_vote
+execute as @a[tag=ic_player] if score @s ic_vote matches 11 run scoreboard players set @s ic_vote 0
 execute as @a[tag=round_victor] run tag @s remove round_victor
