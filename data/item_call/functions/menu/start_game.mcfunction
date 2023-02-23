@@ -84,6 +84,13 @@ execute if score .start ic_timers matches 211 run bossbar set item_call:status v
 # cancel if no players
 execute if score .start ic_timers matches 212 store result score .players ic_gamedata run execute if entity @a[team=ic_player]
 execute if score .start ic_timers matches 212 if score .players ic_gamedata matches 0 run function item_call:game/scripts/no_players
+# remove trigger perms
+execute if score .start ic_timers matches 213 run scoreboard players set .active ic_gamedata 1
+execute if score .start ic_timers matches 213 as @a[tag=ic_op] run trigger ic_menu set 999
+execute if score .start ic_timers matches 213 as @a run trigger ic_jointeam set 999
+execute if score .start ic_timers matches 213 run scoreboard players reset @a[tag=ic_op] ic_menu
+execute if score .start ic_timers matches 213 run scoreboard players reset @a ic_jointeam
+
 # player spawning
 # rand location
 execute if score .start ic_timers matches 213 if score .rand_spawn ic_gamedata matches 1 run tellraw @a {"text":"Randomizing spawn region... please wait","color":"red"}
@@ -102,6 +109,8 @@ execute if score .start ic_timers matches 216 run effect give @a[team=ic_player]
 #
 execute if score .start ic_timers matches 216 if score .show_points ic_gamedata matches 1 run scoreboard objectives setdisplay sidebar ic_points
 execute if score .start ic_timers matches 216 if score .show_points ic_gamedata matches 0 run scoreboard objectives setdisplay sidebar 
+#
+execute if score .start ic_timers matches 216 run function item_call:game/scripts/tutorial
 # end script
 execute if score .start ic_timers matches 220 run schedule clear item_call:menu/start_game 
 execute if score .start ic_timers matches 220 run scoreboard players set .start ic_timers 0
