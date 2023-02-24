@@ -24,3 +24,4 @@ tag @a remove ranked
 tag @a remove vote_caller
 tellraw @a[tag=ic_op] [{"text":"[Itemcall] ","color":"aqua"},{"text":"Reset success. You may now access the ","color":"gray"},{"text":"menu","color":"yellow","bold":true,"underlined":true,"clickEvent":{"action":"run_command","value":"/trigger ic_menu set 1"}}]
 scoreboard players set .active ic_gamedata 0
+clear @a barrier{blocker:1b}

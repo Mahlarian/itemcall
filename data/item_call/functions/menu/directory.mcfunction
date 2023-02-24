@@ -29,6 +29,11 @@ execute if score @s ic_menu matches 52 run function item_call:menu/output/52
 execute if score @s ic_menu matches 61 run function item_call:menu/output/61
 execute if score @s ic_menu matches 62 run function item_call:menu/output/62
 
+# Antihoard mode
+
+execute if score @s ic_menu matches 71 run function item_call:menu/output/71
+execute if score @s ic_menu matches 72 run function item_call:menu/output/72
+
 execute if score @s ic_menu matches 991 run function item_call:menu/start_game
 execute if score @s ic_menu matches 992 if score .start ic_timers matches 1..190 run function item_call:menu/cancel_game
 execute if score @s ic_menu matches 998 run function item_call:menu/easter_egg
