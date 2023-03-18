@@ -38,7 +38,7 @@ execute if score .choose ic_timers matches 154 run playsound minecraft:block.not
 execute if score .choose ic_timers matches 170 run playsound minecraft:block.note_block.hat master @a ~ ~ ~ 1000 2
 execute if score .choose ic_timers matches 176 run playsound minecraft:block.anvil.land master @a ~ ~ ~ 1000 2
 execute if score .choose ic_timers matches 176 run title @a title [{"text":"Round ","color":"green"},{"score":{"name":".round","objective":"ic_gamedata"},"color":"light_purple"}]
-execute if score .choose ic_timers matches 176 run function item_call:game/scripts/pick_item
+execute if score .choose ic_timers matches 176 run function item_call:game/scripts/item_randomizer/directory
 execute if score .choose ic_timers matches 176 run title @a times 0 60 40
 execute if score .choose ic_timers matches 176 run function item_call:game/scripts/bossbar_name
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players reset @a ic_vote
