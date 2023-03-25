@@ -10,10 +10,11 @@ execute if score .vote ic_timers matches 1 run bossbar set item_call:status colo
 execute if score .vote ic_timers matches 1 run bossbar set item_call:status value 1
 execute if score .vote ic_timers matches 1 run scoreboard players reset @a[tag=ic_player] ic_vote
 execute if score .vote ic_timers matches 1 run schedule clear item_call:game/scripts/item_check
+execute if score .vote ic_timers matches 1 run schedule clear item_call:game/scripts/sp_bossbar_name
 execute if score .vote ic_timers matches 1 run tag @s add vote_caller
 execute if score .vote ic_timers matches 1 store result score .vote_needed ic_gamedata run execute if entity @a[tag=ic_player] 
 execute if score .vote ic_timers matches 2 run scoreboard players operation .vote_needed ic_gamedata /= .vote_div ic_gamedata
-execute if score .vote ic_timers matches 2 if score .vote_needed ic_gamedata matches 0 run scoreboard players set .vote_needed ic_gamedata 1
+execute if score .vote ic_timers matches 2 unless score .players ic_gamedata matches 1 if score .vote_needed ic_gamedata matches 0 run scoreboard players set .vote_needed ic_gamedata 1
 execute if score .vote ic_timers matches 3 store result bossbar item_call:status max run scoreboard players get .vote_needed ic_gamedata
 execute if score .vote ic_timers matches 3 run scoreboard players enable @a[tag=ic_player] ic_vote
 execute if score .vote ic_timers matches 3 run tellraw @a [{"text":"A vote is in progress to skip this round\n","color":"red","bold":true},{"text":"Players needed to skip: ","color":"gray","bold":false,"hoverEvent":{"action":"show_text","contents":[{"text":"","color":"gray","italic":true}]}},{"score":{"name":".vote_needed","objective":"ic_gamedata"},"color":"green","bold":false,"hoverEvent":{"action":"show_text","contents":[{"text":"","color":"gray","italic":true}]}},{"text":"\n","hoverEvent":{"action":"show_text","contents":[{"text":"","color":"gray","italic":true}]}},{"text":"[Click to vote]","color":"yellow","bold":true,"hoverEvent":{"action":"show_text","contents":[{"text":"Only click to vote yes\n"},{"text":"If you do not want to skip\nthe round, simply do nothing.","color":"gray","italic":true}]},"clickEvent":{"action":"run_command","value":"/trigger ic_vote set 11"}}]

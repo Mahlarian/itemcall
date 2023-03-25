@@ -1,6 +1,7 @@
 title @a title {"text":"Round skipped","color":"yellow"}
 title @a subtitle {"text":"An operator has skipped this round","color":"white"} 
 title @a times 0 100 20
+schedule clear item_call:game/scripts/sp_bossbar_name
 bossbar set item_call:status color yellow
 bossbar set item_call:status name {"text": "Round skipped by operator","color": "yellow"}
 bossbar set item_call:status max 1

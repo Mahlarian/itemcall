@@ -1,4 +1,6 @@
 schedule clear item_call:game/scripts/end_game
+schedule clear item_call:game/scripts/item_check
+schedule clear item_call:game/scripts/sp_bossbar_name
 scoreboard players reset .end ic_timers
 scoreboard players reset .item ic_gamedata
 scoreboard players reset .rank ic_gamedata
@@ -16,6 +18,10 @@ scoreboard objectives add ic_vote trigger
 scoreboard players reset .choose ic_timers
 scoreboard players reset .start ic_timers
 scoreboard players reset .vote ic_timers
+scoreboard players reset .deca_sec ic_timers
+scoreboard players reset .sec ic_timers
+scoreboard players reset .min ic_timers
+scoreboard players reset .hour ic_timers
 scoreboard players set .round ic_gamedata 1
 tag @a remove 1st
 tag @a remove 2nd

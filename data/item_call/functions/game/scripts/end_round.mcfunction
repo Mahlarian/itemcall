@@ -89,12 +89,17 @@ execute if score .item ic_gamedata matches 88 as @a[tag=ic_player,nbt={Inventory
 execute if score .item ic_gamedata matches 89 as @a[tag=ic_player,nbt={Inventory:[{id:"minecraft:netherite_block"}]}] run scoreboard players add @s ic_points 18
 
 function item_call:game/scripts/bossbar_name
-tellraw @a [{"selector":"@a[tag=round_victor]","separator":",","color":"light_purple"},{"text":" successfully found the requested item!","color":"green"}]
+execute unless score .players ic_gamedata matches 1 run tellraw @a [{"selector":"@a[tag=round_victor]","separator":",","color":"light_purple"},{"text":" successfully found the requested item!","color":"green"}]
+execute if score .players ic_gamedata matches 1 run tellraw @a[tag=ic_spectator] [{"selector":"@a[tag=round_victor]","separator":",","color":"light_purple"},{"text":" successfully found the requested item!","color":"green"}]
+execute if score .players ic_gamedata matches 1 run schedule clear item_call:game/scripts/sp_bossbar_name
+execute if score .players ic_gamedata matches 1 run tellraw @a[tag=ic_player] [{"text":"You successfully found the requested item in ","color":"green"},{"score":{"name":".hour","objective":"ic_timers"},"color":"white"},{"text":"h","color":"aqua"},{"score":{"name":".min","objective":"ic_timers"},"color":"white"},{"text":"m","color":"aqua"},{"score":{"name":".sec","objective":"ic_timers"},"color":"white"},{"text":"."},{"score":{"name":".deca_sec","objective":"ic_timers"},"color":"white"},{"text":"s","color":"aqua"}]
 playsound minecraft:entity.player.levelup master @a ~ ~ ~ 1000 1
 execute if score .vote_skip ic_gamedata matches 1 as @a[tag=ic_player] run trigger ic_vote set 400
 execute if score .vote_skip ic_gamedata matches 1 run scoreboard players reset @a ic_vote 
 scoreboard players add .round ic_gamedata 1
 
-execute if score .win_method ic_gamedata matches 1 as @a if score @s ic_points >= .win_amount ic_gamedata run function item_call:game/scripts/end_game
-execute if score .win_method ic_gamedata matches 2 if score .round ic_gamedata > .win_amount ic_gamedata run function item_call:game/scripts/end_game
+execute if score .win_method ic_gamedata matches 1 unless score .players ic_gamedata matches 1 as @a if score @s ic_points >= .win_amount ic_gamedata run function item_call:game/scripts/end_game
+execute if score .win_method ic_gamedata matches 2 unless score .players ic_gamedata matches 1 if score .round ic_gamedata > .win_amount ic_gamedata run function item_call:game/scripts/end_game
+execute if score .win_method ic_gamedata matches 1 if score .players ic_gamedata matches 1 as @a if score @s ic_points >= .win_amount ic_gamedata run function item_call:game/scripts/sp_end_game
+execute if score .win_method ic_gamedata matches 2 if score .players ic_gamedata matches 1 if score .round ic_gamedata > .win_amount ic_gamedata run function item_call:game/scripts/sp_end_game
 schedule function item_call:game/scripts/start_round 5s

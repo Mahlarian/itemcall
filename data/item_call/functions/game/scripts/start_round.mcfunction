@@ -40,7 +40,7 @@ execute if score .choose ic_timers matches 176 run playsound minecraft:block.anv
 execute if score .choose ic_timers matches 176 run title @a title [{"text":"Round ","color":"green"},{"score":{"name":".round","objective":"ic_gamedata"},"color":"light_purple"}]
 execute if score .choose ic_timers matches 176 run function item_call:game/scripts/item_randomizer/directory
 execute if score .choose ic_timers matches 176 run title @a times 0 60 40
-execute if score .choose ic_timers matches 176 run function item_call:game/scripts/bossbar_name
+execute if score .choose ic_timers matches 176 unless score .players ic_gamedata matches 1 run function item_call:game/scripts/bossbar_name
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players reset @a ic_vote
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run scoreboard players enable @a[tag=ic_player] ic_vote
 execute if score .vote_skip ic_gamedata matches 1 if score .choose ic_timers matches 176 run tag @a[tag=vote_caller] remove vote_caller
@@ -48,5 +48,10 @@ execute if score .vote_skip ic_gamedata matches 2 if score .choose ic_timers mat
 
 #
 execute if score .choose ic_timers matches 176 run schedule function item_call:game/scripts/item_check 10t
+execute if score .choose ic_timers matches 176 if score .players ic_gamedata matches 1 run scoreboard players set .deca_sec ic_timers 0
+execute if score .choose ic_timers matches 176 if score .players ic_gamedata matches 1 run scoreboard players set .sec ic_timers 0
+execute if score .choose ic_timers matches 176 if score .players ic_gamedata matches 1 run scoreboard players set .min ic_timers 0
+execute if score .choose ic_timers matches 176 if score .players ic_gamedata matches 1 run scoreboard players set .hour ic_timers 0
+execute if score .choose ic_timers matches 176 if score .players ic_gamedata matches 1 run schedule function item_call:game/scripts/sp_bossbar_name 10t
 execute if score .choose ic_timers matches 176 run schedule clear item_call:game/scripts/start_round
 execute if score .choose ic_timers matches 176 run scoreboard players set .choose ic_timers 0
