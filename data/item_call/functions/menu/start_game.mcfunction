@@ -115,6 +115,7 @@ execute if score .start ic_timers matches 215 if score .rand_spawn ic_gamedata m
 # remove rand location tag (if needed)
 execute if score .start ic_timers matches 216 if score .rand_spawn ic_gamedata matches 1 run tag @a[tag=wgen_marker] remove wgen_marker
 # apply start effects
+execute if score .start ic_timers matches 216 as @a at @s run spawnpoint @s ~ ~ ~
 execute if score .start ic_timers matches 216 run effect give @a[tag=ic_player] minecraft:saturation 200 4 true
 execute if score .start ic_timers matches 216 run effect give @a[tag=ic_player] minecraft:resistance 10 4 true
 execute if score .start ic_timers matches 216 run effect give @a[tag=ic_player] minecraft:regeneration 10 4 true
