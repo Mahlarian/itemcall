@@ -1,6 +1,7 @@
 scoreboard players set in math 32
 scoreboard players set in1 math 52
 function math:rng/range
+execute if score .item ic_gamedata = out math run function item_call:game/scripts/item_randomizer/pool_3
 scoreboard players operation .item ic_gamedata = out math
 
 execute if score .item ic_gamedata matches 32 run title @a subtitle [{"text":"Acquire ","color":"white"},{"text":"Clock","color":"blue"}]

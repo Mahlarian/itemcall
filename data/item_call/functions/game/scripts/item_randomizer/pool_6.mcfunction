@@ -1,6 +1,7 @@
 scoreboard players set in math 86
 scoreboard players set in1 math 89
 function math:rng/range
+execute if score .item ic_gamedata = out math run function item_call:game/scripts/item_randomizer/pool_6
 scoreboard players operation .item ic_gamedata = out math
 
 playsound entity.wither.spawn master @a ~ ~ ~ 1000 1

@@ -1,6 +1,7 @@
 scoreboard players set in math 75
 scoreboard players set in1 math 85
 function math:rng/range
+execute if score .item ic_gamedata = out math run function item_call:game/scripts/item_randomizer/pool_5
 scoreboard players operation .item ic_gamedata = out math
 
 execute if score .item ic_gamedata matches 75 run title @a subtitle [{"text":"Acquire ","color":"white"},{"text":"Music Disc - Pigstep","color":"gold"}]
