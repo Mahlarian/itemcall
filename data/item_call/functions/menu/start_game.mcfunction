@@ -1,6 +1,6 @@
 schedule function item_call:menu/start_game 1t
 scoreboard players add .start ic_timers 1
-# starting cinematic
+# 
 execute if score .start ic_timers matches 1 run tellraw @a [{"selector":"@s","color":"blue","bold":true},{"text":" has started the game!","color":"gray","bold":false}]
 execute if score .start ic_timers matches 1..651 unless entity @a[tag=!ic_player,tag=!ic_spectator] run scoreboard players set .start ic_timers 652
 execute if score .start ic_timers matches 1 run bossbar set item_call:status visible true
@@ -10,15 +10,17 @@ execute if score .start ic_timers matches 2 run bossbar set item_call:status val
 execute if score .start ic_timers matches 2 run bossbar set item_call:status color red
 execute if score .start ic_timers matches 2 run scoreboard players set .start_cd ic_timers 30
 execute if score .start ic_timers matches 2 run scoreboard players set .unready ic_gamedata 0
-# UPDATE THIS vvvv
+#
 execute if score .start ic_timers matches 2..651 run scoreboard players add .start_1s ic_timers 1
 execute if score .start ic_timers matches 2..651 if score .start_1s ic_timers matches 21.. run scoreboard players remove .start_cd ic_timers 1
 execute if score .start ic_timers matches 2..651 if score .start_1s ic_timers matches 21.. run scoreboard players set .start_1s ic_timers 0
+
 #
 execute if score .start_1s ic_timers matches 20 run bossbar set item_call:status name [{"text":"Starting in ","color":"light_purple"},{"score":{"name":".start_cd","objective":"ic_timers"},"color":"white"},{"text":" seconds","color":"light_purple"}]
 execute if score .start_1s ic_timers matches 20 store result bossbar item_call:status value run scoreboard players get .start_cd ic_timers 
-execute if score .start_1s ic_timers matches 20 store result score .unready ic_gamedata run execute if entity @a[tag=!ic_player,tag=!ic_player]
+execute if score .start_1s ic_timers matches 20 store result score .unready ic_gamedata run execute if entity @a[tag=!ic_player,tag=!ic_spectator]
 execute if score .start_1s ic_timers matches 20 run title @a title [{"text":"Waiting for ","color":"light_purple"},{"score":{"name":".unready","objective":"ic_gamedata"},"color":"white"},{"text":" players","color":"light_purple"}]
+execute if score .start_cd ic_timers matches ..29 if score .start_1s ic_timers matches 20 run title @a times 0 40 0
 execute if score .start_cd ic_timers matches 25 if score .start_1s ic_timers matches 16 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
 execute if score .start_cd ic_timers matches 25 if score .start_1s ic_timers matches 18 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
 execute if score .start_cd ic_timers matches 25 if score .start_1s ic_timers matches 20 run playsound block.note_block.pling master @a[tag=!ic_player,tag=!ic_spectator] ~ ~ ~ 1000 1
