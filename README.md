@@ -36,7 +36,8 @@ What you'll need:
 
 ### Configuration
 
-Once you've followed the install instructions above, you can confirm that the datapack is installed correctly before moving on using `/datapack list`
+Once you've followed the install instructions above, you can confirm that the datapack is installed correctly before moving on using `/datapack list`  
+
 ![install confirmed](./docs/confirm_install.png)
 
 Itemcall has an abundance of settings you can choose to edit to change things such as game length and win conditions. Before customizing however, you'll need to grant yourself permission. Confirm you have op (or cheats enabled), then run the command `/tag @s add ic_op`. You may replace `@s` with a player name to grant other players permission. Now you can run the command `/trigger ic_menu` to change settings. We'll cover those now.
@@ -105,7 +106,11 @@ Rounds are balanced around Vanilla progression, so items from late game will not
 
 In the event an item is drawn, a vote can be called by players through the `/trigger ic_vote` command. This command is locked from non IC op players if chosen in the configuration, and the round will be skipped immediately in the event the IC op decides to skip the round. Players will have a limited amount of time to vote, and the vote will only pass if enough players vote "Yes". Note that you only need to take action if you agree to skip the round.
 
+The game will end once either a player has reached the point goal, or X amount of rounds have passed, depending on what win method you chose in the configuration. Players will be ranked up to 3rd place depending on their performance. In the event of a tie, players will share that placement. 
+
 ### Items
+
+![item distribution table](./docs/item_table.png)
 
 ## Credits
 - Serioustar - For original game idea, gameplay suggestions, and playtesting
