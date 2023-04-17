@@ -7,7 +7,8 @@ scoreboard objectives add ic_points dummy {"text":"Points","color":"aqua","bold"
 bossbar add item_call:status {"text": "item_call"}
 execute unless score .active ic_gamedata matches 0..1 run scoreboard players set .active ic_gamedata 0
 execute unless score .win_method ic_gamedata matches 1..2 run scoreboard players set .win_method ic_gamedata 1
-execute unless score .win_amount ic_gamedata matches 0..999 run scoreboard players set .win_amount ic_gamedata 5
+execute unless score .win_amount ic_gamedata matches 0..999 if score .win_method ic_gamedata matches 1 run scoreboard players set .win_amount ic_gamedata 15
+execute unless score .win_amount ic_gamedata matches 0..999 unless score .win_method ic_gamedata matches 1 run scoreboard players set .win_amount ic_gamedata 5
 execute unless score .show_points ic_gamedata matches 0..1 run scoreboard players set .show_points ic_gamedata 1
 execute unless score .rand_spawn ic_gamedata matches 0..1 run scoreboard players set .rand_spawn ic_gamedata 1
 execute unless score .spread_plyr ic_gamedata matches 0..1 run scoreboard players set .spread_plyr ic_gamedata 1
