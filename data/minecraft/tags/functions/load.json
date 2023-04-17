@@ -1,5 +1,6 @@
 {
     "values":[
-       "item_call:load"
+       "item_call:load",
+       "math:zprivate/init"
     ]
 }
